@@ -55,8 +55,7 @@ Core::LinAlg::SparseMatrix::SparseMatrix(const Core::LinAlg::Map& rowmap, int np
   const bool static_profile = profile == StorageProfile::static_profile;
   if (matrixtype_ == CRS_MATRIX)
   {
-    sysmat_ =
-        std::make_shared<Epetra_CrsMatrix>(::Copy, rowmap.get_epetra_map(), npr, static_profile);
+    sysmat_ = std::make_shared<Epetra_CrsMatrix>(::Copy, rowmap.get_epetra_map(), 5*npr, true);
   }
   else if (matrixtype_ == FE_MATRIX)
   {
